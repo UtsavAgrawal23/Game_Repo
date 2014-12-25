@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
+<style>
+table, td {
+border: 1px solid rgb(211, 47, 47);
+padding: 20px;
+margin: auto;
+}
+td.active{
+    background: red;
+}
+td.killed{
+    background: green;
+}
+.container{
+background-color: antiquewhite;
+padding: 9px;
+margin-bottom: 16px;
+}
+</style>
+</head>
+<body>
+<div class = "container">
+	<p id="abc">
+	Life Balance:<span>3</span>
+	</p>
+</div>
+<script>
+$(document).ready(function(){
+	var life = 3;
+	//var lifeBalance = life;
+	var active;
+	myFunction();
+		$("td").text("");
+		$(document).keydown(function(e){
+			active = $("td.active").removeClass('active');
+			var x = active.index();
+			if(e.keyCode == 37){
+				x--;
+			}
+			if(e.keyCode == 39){
+				x++;
+			}
+		active = $('#6').find('td').eq(x).addClass('active');
+		});
+		
+		col1();
+		col2();
+		col3();
+		col4();
+		
+		function col1(){
+		setInterval(function(){
+			myloopcol1();
+		
+		},2000);
+		}
+		
+		function col2(){
+		setInterval(function(){
+			myloopcol2();
+		
+		},3000);
+		}
+		
+		function col3(){
+		setInterval(function(){
+			myloopcol3();
+		
+		},2600);
+		}
+		
+		function col4(){
+		setInterval(function(){
+			myloopcol4();
+		
+		},2800);
+		}
+
+  var i = 1;
+  
+  function myloopcol1(){
+		var a = "#"+i;
+		$(a).find('td').eq(0).text("*");
+		i++;
+		//setTimeout(function(){
+		//	$("td").text("");
+		//},1000);
+		
+	   if(i>6) {
+	   var cls = $('#6').find('td').eq(0).attr('class');
+	   if(cls == 'active'){
+			life--;
+			$("span").text(life);
+			
+		if(life<=0) {
+		  var z = confirm("Game over... Wanna Play again ?");
+		  if(z==0) window.close();
+		  document.location.reload();
+		  
+		}
+	   }
+	     i=1;
+		 for(var a=1;a<7;a++){
+		 var b = "#"+a;
+		 $(b).find('td').eq(0).text("");
+		 }
+	  }
+ 	}
+	var j=1;
+	 function myloopcol2(){
+		var a = "#"+j;
+		$(a).find('td').eq(1).text("*");
+		j++;
+	   if(j>6) {
+	    var cls = $('#6').find('td').eq(1).attr('class');
+	   if(cls == 'active'){
+		life--;
+		$("span").text(life);
+		if(life<=0) {
+		  var z = confirm("Game over... Wanna Play again ?");
+		  if(z==0) window.close();
+		  document.location.reload();
+		  
+		}
+			
+	   }
+	     j=1;
+		 for(var a=1;a<7;a++){
+		 var b = "#"+a;
+		 $(b).find('td').eq(1).text("");
+		 }
+	  }
+ 	}
+	var k=1;
+	function myloopcol3(){
+		var a = "#"+k;
+		$(a).find('td').eq(2).text("*");
+		k++;
+	//	setTimeout(function(){
+	//		$("td").text("");
+	//	},1000);
+		
+	   if(k>6) {
+	   
+	    var cls = $('#6').find('td').eq(2).attr('class');
+	   if(cls == 'active'){
+			life--;
+			$("span").text(life);
+		if(life<=0) {
+		  var z = confirm("Game over... Wanna Play again ?");
+		  if(z==0) window.close();
+		  document.location.reload();
+		  
+		}
+	  }
+	     k=1;
+		 for(var a=1;a<7;a++){
+		 var b = "#"+a;
+		 $(b).find('td').eq(2).text("");
+		 }
+	  }
+ 	}
+	
+	var l = 1;
+	function myloopcol4(){
+		var a = "#"+l;
+		$(a).find('td').eq(3).text("*");
+		l++;
+	   if(l>6) {	
+	    var cls = $('#6').find('td').eq(4).attr('class');
+			if(cls == 'active'){
+			life--;
+			$("span").text(life);
+			if(life<=0) {
+		     var z = confirm("Game over... Wanna Play again ?");
+		       if(z==0) window.close();
+		        document.location.reload();
+		  	}
+	   }
+	   l=1;
+		 for(var a=1;a<7;a++){
+		 var b = "#"+a;
+		 $(b).find('td').eq(3).text("");
+		 }
+	    }
+ 	}
+});
+function myFunction() {
+	var table = document.createElement('table');
+	for (var i = 1;i<6;i++){
+		var tr = document.createElement('tr');
+		tr.setAttribute("id",i);
+		var td1 = document.createElement('td');
+		var td2 = document.createElement('td');
+		var td3 = document.createElement('td');
+		var td4 = document.createElement('td');
+		var txt1 = document.createTextNode('*');
+		var txt2 = document.createTextNode('*');
+		var txt3 = document.createTextNode('*');
+		var txt4 = document.createTextNode('*');
+		td1.appendChild(txt1);
+		td2.appendChild(txt2);
+		td3.appendChild(txt3);
+		td4.appendChild(txt4);
+		tr.appendChild(td1);
+		tr.appendChild(td2);
+		tr.appendChild(td3);
+		tr.appendChild(td4);
+		
+		table.appendChild(tr);
+		
+	}
+	var tr = document.createElement('tr');
+		tr.setAttribute("id","6");
+		var td1 = document.createElement('td');
+		td1.setAttribute("class","active");
+		
+		var td2 = document.createElement('td');
+		var td3 = document.createElement('td');
+		var td4 = document.createElement('td');
+		tr.appendChild(td1);
+		tr.appendChild(td2);
+		tr.appendChild(td3);
+		tr.appendChild(td4);
+		table.appendChild(tr);
+	document.body.appendChild(table);
+}
+</script>
+
+</body>
+</html>
